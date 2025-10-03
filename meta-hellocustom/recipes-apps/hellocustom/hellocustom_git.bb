@@ -1,8 +1,8 @@
 SUMMARY = "Simple Hello Custom app"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=3914388ed65427d749c0c5886d2d12cf"
 
-SRC_URI = "git://github.com/toncompte/hellocustom.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/stanleyselvaratnam/meta-custom.git;protocol=https;branch=main"
 SRCREV = "AUTOINC"
 
 S = "${WORKDIR}/git/src"
