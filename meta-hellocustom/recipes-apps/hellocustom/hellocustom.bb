@@ -1,6 +1,6 @@
 SUMMARY = "Simple Hello Custom app"
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=3914388ed65427d749c0c5886d2d12cf"
+
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI = "file://main.c"
 
