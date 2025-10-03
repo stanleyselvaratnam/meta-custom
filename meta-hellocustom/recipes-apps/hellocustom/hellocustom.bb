@@ -4,7 +4,9 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=33ef8b00d7f1a720a56a6d80ab7358a1"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI = "file://main.c file://LICENSE"
+SRC_URI = "file://main.c \
+           file://Makefile \
+           file://LICENSE"
 
 S = "${WORKDIR}"
 
