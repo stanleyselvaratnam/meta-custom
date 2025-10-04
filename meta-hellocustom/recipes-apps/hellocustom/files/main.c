@@ -1,6 +1,6 @@
 #include <stdio.h>
 
 int main() {
-    printf("Hello Custom World!\n");
+    printf("Hello Custom World with Mender ! \n");
     return 0;
 }
