@@ -5,8 +5,12 @@ SRC_URI = "file://public.key"
 S = "${WORKDIR}"
 
 do_install() {
+    # Crée le répertoire /etc/mender dans l'image
     install -d ${D}${sysconfdir}/mender
-    install -m 0644 public.key ${D}${sysconfdir}/mender/public.key
+
+    # Installe la clé sous le nom attendu par Mender
+    install -m 0644 public.key ${D}${sysconfdir}/mender/artifact-verify-key.pem
 }
 
-FILES_${PN} += "${sysconfdir}/mender/public.key"
+# Indique à Yocto quel fichier doit être empaqueté
+FILES_${PN} += "${sysconfdir}/mender/artifact-verify-key.pem"
