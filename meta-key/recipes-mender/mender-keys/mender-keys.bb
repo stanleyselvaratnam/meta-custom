@@ -1,16 +1,23 @@
-SUMMARY = "Install Mender artifact verification key"
+SUMMARY = "Mender public key package"
+DESCRIPTION = "Provides the Mender public key for artifact verification"
 LICENSE = "CLOSED"
+PR = "r0"
+
+# Dépendances éventuelles
+# DEPENDS = "..."
+
+# Le fichier source est juste le fichier statique dans files/
 SRC_URI = "file://public.key"
 
 S = "${WORKDIR}"
 
+# Installation
 do_install() {
-    # Crée le répertoire /etc/mender dans l'image
+    # Crée le répertoire cible dans le rootfs
     install -d ${D}${sysconfdir}/mender
-
-    # Installe la clé sous le nom attendu par Mender
-    install -m 0644 public.key ${D}${sysconfdir}/mender/artifact-verify-key.pem
+    # Copie la clé publique
+    install -m 0644 ${WORKDIR}/public.key ${D}${sysconfdir}/mender/artifact-verify-key.pem
 }
 
-# Indique à Yocto quel fichier doit être empaqueté
-FILES_${PN} += "${sysconfdir}/mender/artifact-verify-key.pem"
+# Nettoyage et empaquetage
+FILES_${PN} = "${sysconfdir}/mender/artifact-verify-key.pem"
