@@ -3,7 +3,7 @@ DESCRIPTION = "Installs the main Mender public key (.pem) for artifact verificat
 LICENSE = "CLOSED"
 PR = "r1"
 
-# ✅ Ajoute cette dépendance pour que openssl soit dispo dans le sysroot
+# Ajoute cette dépendance pour que openssl soit dispo dans le sysroot
 DEPENDS = "openssl-native"
 
 SRC_URI = "file://public.key"
