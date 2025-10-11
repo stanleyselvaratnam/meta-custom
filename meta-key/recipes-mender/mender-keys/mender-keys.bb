@@ -3,6 +3,9 @@ DESCRIPTION = "Installs the main Mender public key (.pem) for artifact verificat
 LICENSE = "CLOSED"
 PR = "r1"
 
+# ✅ Ajoute cette dépendance pour que openssl soit dispo dans le sysroot
+DEPENDS = "openssl-native"
+
 SRC_URI = "file://public.key"
 
 S = "${WORKDIR}"
@@ -10,7 +13,7 @@ S = "${WORKDIR}"
 do_install() {
     install -d ${D}${sysconfdir}/mender
     # Conversion de .key → .pem pour le client Mender
-    openssl rsa -in ${WORKDIR}/public.key -pubin -outform PEM \
+    ${STAGING_BINDIR_NATIVE}/openssl rsa -in ${WORKDIR}/public.key -pubin -outform PEM \
         -out ${D}${sysconfdir}/mender/artifact-verify-key.pem
 }
 

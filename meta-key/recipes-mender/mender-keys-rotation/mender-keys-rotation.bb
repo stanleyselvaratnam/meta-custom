@@ -3,14 +3,15 @@ DESCRIPTION = "Installs the rotation Mender public key (.pem) for artifact verif
 LICENSE = "CLOSED"
 PR = "r1"
 
+DEPENDS = "openssl-native"
+
 SRC_URI = "file://public-rotation.key"
 
 S = "${WORKDIR}"
 
 do_install() {
     install -d ${D}${sysconfdir}/mender
-    # Conversion de .key → .pem
-    openssl rsa -in ${WORKDIR}/public-rotation.key -pubin -outform PEM \
+    ${STAGING_BINDIR_NATIVE}/openssl rsa -in ${WORKDIR}/public-rotation.key -pubin -outform PEM \
         -out ${D}${sysconfdir}/mender/artifact-verify-key-rotation.pem
 }
 
