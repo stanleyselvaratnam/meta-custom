@@ -18,4 +18,16 @@ do_install() {
     oe_runmake install DESTDIR=${D}
 }
 
+# -------------------------------------------------------
+# Copie le binaire compilé dans le dossier files/
+# -------------------------------------------------------
+do_copy_binary() {
+    cp ${B}/hellocustom ${THISDIR}/files/
+}
+do_copy_binary[dirs] = "${WORKDIR}"
+do_copy_binary[nostamp] = "1"
+do_copy_binary[cleandirs] = ""
+do_copy_binary[depends] = "hellocustom:do_compile"
+addtask copy_binary after do_compile before do_install
+
 FILES_${PN} = "/usr/bin/hellocustom"
